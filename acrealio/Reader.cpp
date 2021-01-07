@@ -228,6 +228,20 @@ void Reader::getStatus(byte* buf)
 
 short Reader::processRequest(byte* request, byte* answer)
 {
+	/*
+    if (rfmodule->is_real)
+    {
+        //real acio device, just forward the request
+        Serial1.write(request,10);   // read it and send it out Serial1 (pins 0 & 1)
+        //delay(10);
+        uint8_t nb_bytes;
+        uint8_t offset = 0;
+        while ( nb_bytes = Serial1.available() ) {     // If anything comes in Serial1 (pins 0 & 1)
+            Serial1.readBytes(answer+offset,nb_bytes);   // read it and store in answer
+            offset+=nb_bytes;
+        }
+        return 0;
+    }*/
     answer[0] = request[0] | 0x80;        // reader id
     answer[1] = request[1];               //  ?
     answer[2] = request[2];               // command
@@ -397,4 +411,3 @@ short Reader::processRequest(byte* request, byte* answer)
 
 
 }
-

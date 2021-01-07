@@ -7,6 +7,7 @@
 #include "RR10.h"
 #include "SL015M.h"
 #include "PN5180Reader.h"
+#include "WavepassReader.h"
 #include "Ddr.h"
 
 
@@ -77,7 +78,9 @@ Ddr nod3;
 
 //1P rfid module allocation
 
-#if RFID_MODULE1 == 1
+#if RFID_MODULE1 == 0
+WavepassReader mod1;
+#elif RFID_MODULE1 == 1
 SL015M mod1;
 #elif RFID_MODULE1 == 2
 RR10 mod1;
@@ -89,7 +92,9 @@ PN5180Reader mod1;
 
 //2P rfid module allocation
 #if GAMETYPE == 2 || GAMETYPE == 6
-#if RFID_MODULE2 == 1
+#if RFID_MODULE2 == 0
+WavepassReader mod2;
+#elif RFID_MODULE2 == 1
 SL015M mod2;
 #elif RFID_MODULE2 == 2
 RR10 mod2;
@@ -474,4 +479,3 @@ long detRate()
 
     return baudrates[i];
 }
-

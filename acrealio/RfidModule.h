@@ -7,6 +7,7 @@
 class RfidModule
 {
 public:
+    bool is_real = false;
     virtual void setPins(int sensor, HardwareSerial* serialid);
     virtual void read();
     virtual void update();
